@@ -58,7 +58,7 @@ import { ref } from 'vue';
 import { commonGlobalState } from '@/utils/commonStore.js';
 import Axios from '@/axios/axiosPlugin';
 import { fetchData } from '@/utils/common.js';
-const isLoginMode = ref(true); // 切换登录和注册模式
+const isLoginMode = ref(false); // 切换登录和注册模式
 const username = ref('');
 const password = ref('');
 const email = ref('');

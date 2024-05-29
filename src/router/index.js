@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import CaptureMainView from '../views/CaptureMainView.vue'
 import QuestionsCollectionView from '../views/QuestionsCollectionView.vue'
-import UserInformationView from '../views/UserInformationView.vue'
+// import UserInformationView from '../views/UserInformationView.vue'
+import KnowledgegraphView from '../views/KnowledgegraphView.vue'
 import NotFoundComponent from '../views/NotFoundPage.vue'
 
 
@@ -18,10 +19,15 @@ const router = createRouter({
       name: 'QuestionsCollectionView',
       component: QuestionsCollectionView
     },
+    // {
+    //   path: '/musee_view_master/userinfo',
+    //   name: 'UserInformationView',
+    //   component: UserInformationView
+    // },
     {
-      path: '/musee_view_master/userinfo',
-      name: 'UserInformationView',
-      component: UserInformationView
+      path: '/musee_view_master/student',
+      name: 'KnowledgegraphView',
+      component: KnowledgegraphView
     },
     {
       path: '/musee_view_master/error',

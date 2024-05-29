@@ -15,6 +15,11 @@
                 {{ button.label }}
             </v-btn>
         </div>
+        <div class="knowledge-graph-section">
+            <v-btn rounded="xl" size="x-large" variant="outlined" color="#388FCA"
+                @click="() => { show == false; GraphShow = true;}">知识图谱
+                </v-btn>
+        </div>
         <div class="about-us-section">
             <v-btn rounded="xl" size="x-large" variant="outlined" color="#388FCA"
                 @click="() => { show == false; ConversationShow = true;}">About
@@ -24,7 +29,7 @@
             </v-avatar>
         </div>
     </div>
-
+    
     <div class="text-center">
         <template>
             <v-dialog v-model="ConversationShow" width="600px">
@@ -55,6 +60,25 @@
                             <v-card-text>{{intro}}</v-card-text>
                         </div>
                     </v-expand-transition>
+                </v-card>
+            </v-dialog>
+        </template>
+        <template>
+            <v-dialog v-model="GraphShow" width="600px">
+                <v-card class="mx-auto" max-width="400">
+                    <v-btn icon small class="close-button"
+                            @click="() => { show = false; GraphShow = false;}">
+                            <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                    <v-card-subtitle>  </v-card-subtitle>
+                    <v-card-title> 知识图谱 </v-card-title>
+
+                    <v-card-actions>
+                        <v-btn class="v-btn__content" rounded="xl" size="x-large" variant="outlined" color="#388FCA" @click="handleUpload">上传文件</v-btn>
+                    </v-card-actions>
+                    <v-card-actions>
+                        <v-btn class="v-btn__content1" rounded="xl" size="x-large" variant="outlined" color="#388FCA" @click="() => { show = false; GraphShow = false;}">点击生成</v-btn>
+                    </v-card-actions>
                 </v-card>
             </v-dialog>
         </template>
@@ -130,6 +154,7 @@
 import { onMounted, ref } from 'vue';
 import router from '@/router';
 const ConversationShow = ref(false);
+const GraphShow = ref(false);
 const dialog = ref(false);
 const showPassword = ref(false);
 const show=ref(false);
@@ -157,6 +182,17 @@ const buttons = ref([
         isActive: false,
         to: '/musee_view_master/collection',
     },
+    // {
+    //     rounded: 'xl',
+    //     size: 'x-large',
+    //     color: '#D6F3FF',
+    //     elevation: '0',
+    //     fontSize: '20px',
+    //     textColor: '#96ABB3',
+    //     label: '学生档案',
+    //     isActive: false,
+    //     to: '/musee_view_master/userinfo'
+    // },
     {
         rounded: 'xl',
         size: 'x-large',
@@ -166,7 +202,7 @@ const buttons = ref([
         textColor: '#96ABB3',
         label: '学生档案',
         isActive: false,
-        to: '/musee_view_master/userinfo'
+        to: '/musee_view_master/student'
     },
 ]);
 
@@ -184,8 +220,21 @@ onMounted(() => {
         buttons.value[1].isActive = true;
     } else if (path === '/musee_view_master/userinfo') {
         buttons.value[2].isActive = true;
+    }else if (path === '/musee_view_master/student') {
+        buttons.value[3].isActive = true;
     }
 });
+//上传文件
+function handleUpload() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.addEventListener('change', (e) => {
+         // 处理选中文件的逻辑
+        const file = e.target.files[0];
+        console.log(file);
+    });
+    input.click();
+};
 
 </script>
 
@@ -237,7 +286,28 @@ onMounted(() => {
     justify-content: space-around;
     align-items: center;
 }
-
+.knowledge-graph-section {
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.v-btn__content {
+    margin:30px 50px 0px 50px;
+    align-items: center;
+    display: inline-flex;
+    color: #388FCA;
+    font-weight: 1000;
+    padding: 20px
+}
+.v-btn__content1 {
+    margin:0px 50px 30px 50px;
+    align-items: center;
+    display: inline-flex;
+    color: #388FCA;
+    font-weight: 1000;
+    padding: 20px
+}
 .image-container {
     position: relative;
     width: 100%;
