@@ -204,6 +204,17 @@ const buttons = ref([
         isActive: false,
         to: '/musee_view_master/student'
     },
+    // {
+    //     rounded: 'xl',
+    //     size: 'x-large',
+    //     color: '#D6F3FF',
+    //     elevation: '0',
+    //     fontSize: '20px',
+    //     textColor: '#96ABB3',
+    //     label: 'test',
+    //     isActive: false,
+    //     to: '/musee_view_master/test'
+    // },
 ]);
 
 const changeColor = (index) => {
@@ -218,11 +229,16 @@ onMounted(() => {
         buttons.value[0].isActive = true;
     } else if (path === '/musee_view_master/collection') {
         buttons.value[1].isActive = true;
-    } else if (path === '/musee_view_master/userinfo') {
+    } 
+    // else if (path === '/musee_view_master/userinfo') {
+    //     buttons.value[2].isActive = true;
+    // }
+    else if (path === '/musee_view_master/student') {
         buttons.value[2].isActive = true;
-    }else if (path === '/musee_view_master/student') {
-        buttons.value[3].isActive = true;
     }
+    // else if (path === '/musee_view_master/test') {
+    //     buttons.value[4].isActive = true;
+    // }
 });
 //上传文件
 function handleUpload() {
