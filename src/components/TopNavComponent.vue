@@ -15,11 +15,11 @@
                 {{ button.label }}
             </v-btn>
         </div>
-        <div class="knowledge-graph-section">
+        <!-- <div class="knowledge-graph-section">
             <v-btn rounded="xl" size="x-large" variant="outlined" color="#388FCA"
                 @click="() => { show == false; GraphShow = true;}">知识图谱
                 </v-btn>
-        </div>
+        </div> -->
         <div class="about-us-section">
             <v-btn rounded="xl" size="x-large" variant="outlined" color="#388FCA"
                 @click="() => { show == false; ConversationShow = true;}">About
@@ -63,7 +63,7 @@
                 </v-card>
             </v-dialog>
         </template>
-        <template>
+        <!-- <template>
             <v-dialog v-model="GraphShow" width="600px">
                 <v-card class="mx-auto" max-width="400">
                     <v-btn icon small class="close-button"
@@ -81,7 +81,7 @@
                     </v-card-actions>
                 </v-card>
             </v-dialog>
-        </template>
+        </template> -->
 
 
         <template>
@@ -204,6 +204,17 @@ const buttons = ref([
         isActive: false,
         to: '/musee_view_master/student'
     },
+    {
+        rounded: 'xl',
+        size: 'x-large',
+        color: '#D6F3FF',
+        elevation: '0',
+        fontSize: '20px',
+        textColor: '#96ABB3',
+        label: '知识图谱',
+        isActive: false,
+        to: '/musee_view_master/graph'
+    },
     // {
     //     rounded: 'xl',
     //     size: 'x-large',
@@ -235,6 +246,9 @@ onMounted(() => {
     // }
     else if (path === '/musee_view_master/student') {
         buttons.value[2].isActive = true;
+    }
+    else if (path === '/musee_view_master/graph') {
+        buttons.value[3].isActive = true;
     }
     // else if (path === '/musee_view_master/test') {
     //     buttons.value[4].isActive = true;
@@ -293,7 +307,7 @@ function handleUpload() {
 .button-section {
     display: flex;
     justify-content: space-around;
-    width: 450px;
+    width: 600px;
 }
 
 .about-us-section {

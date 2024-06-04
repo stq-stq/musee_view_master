@@ -4,6 +4,7 @@ import QuestionsCollectionView from '../views/QuestionsCollectionView.vue'
 // import UserInformationView from '../views/UserInformationView.vue'
 import UserInforView from '../views/UserInforView.vue'
 import NotFoundComponent from '../views/NotFoundPage.vue'
+import LanguageGraphView from '../views/LanguageGraphView.vue'
 
 
 const router = createRouter({
@@ -28,6 +29,11 @@ const router = createRouter({
       path: '/musee_view_master/student',
       name: 'UserInforView',
       component: UserInforView
+    },
+    {
+      path: '/musee_view_master/graph',
+      name: 'LanguageGraphView',
+      component: LanguageGraphView
     },
     {
       path: '/musee_view_master/error',

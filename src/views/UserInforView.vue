@@ -36,7 +36,7 @@
                 <div class="chart-title">
                     <span >核心素养能力档案</span>
                 </div>
-                <div style="margin-bottom: 20px;">
+                <!-- <div style="margin-bottom: 20px;">
                     <div v-for="(verticalIndex,index) in 6" :key="index" class="slider">
                         <div class="slider-text">
                             <span style="font-weight: bold;">{{chartData[index].name}}</span>
@@ -50,6 +50,9 @@
                             </div>
                         </div>
                     </div>
+                </div> -->
+                <div style="margin-left:10px;border-radius: 16px;">
+                    <div ref="echartRef3" style="width: 30vw; height: 60vh;"></div>
                 </div>
                 <div class="chart-title">
                     <span >个性偏好档案</span>
@@ -60,7 +63,7 @@
             </v-card>
         </v-card>
     </v-card>
-        
+    
     
 </template>
 <script setup>
@@ -68,13 +71,29 @@
     import * as echarts from 'echarts';
 
     const echartRef2 = ref(null);
+    const radarChart = ref(null);
+    const echartRef3 = ref(null);
+
     const days = Array.from({ length: 30 }, (_, i) => i + 1); // 生成1到30的数组表示天数
     const searchData = days.map(() => Math.floor(Math.random() * 20)); // 生成随机搜索量数据
 
     const categories = ['多项式函数', '相遇问题', '一元一次方程', '不等式求解', '一次函数', '平面几何', '圆的性质','根与系数关系','指数与对数','因式分解']; // 错题种类
     const dots = Array.from({ length: 10 }, (_, i) => i + 1);
     const categoryData = dots.map(() => Math.floor(Math.random() * 10)); // 各种类错题数量
-
+    const radraData = [{value: [80, 70, 60, 50, 40, 30, 20, 10, 5, 0], name: '学生A'}, 
+        {value: [20, 30, 40, 50, 60, 70, 80, 90, 100, 110], name: '学生B'}, 
+        {value: [50, 40, 30, 20, 10, 0, 10, 20, 30, 40], name: '学生C'}, 
+        {value: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100], name: '学生D'}, 
+        {value: [80, 70, 60, 50, 40, 30, 20, 10, 0, 10], name: '学生E'}, 
+        {value: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100], name: '学生F'}, 
+        {value: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100], name: '学生G'}
+    ]; // 能力档案数据
+    const errorData = [
+        { value: 40, name: '语法错误' },
+        { value: 30, name: '拼写错误' },
+        { value: 20, name: '逻辑错误' },
+        { value: 10, name: '事实错误' }
+    ];
 
     onMounted(() => {
         const myChart2 = echarts.init(echartRef2.value);
@@ -123,7 +142,93 @@
         };
 
         myChart2.setOption(option2);
+        const myChart3 = echarts.init(echartRef3.value);
 
+        const option3 = {
+            title: {
+                text: '图表区',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            radar: {
+                
+                indicator: [
+                        { name: '核心素养', max: 100 },
+                        { name: '数学审美', max: 100 },
+                        { name: '沟通交际', max: 100 },
+                        { name: '创新意识', max: 100 },
+                        { name: '实践能力', max: 100 },
+                        { name: '自学能力', max: 100 },
+                        { name: '学习习惯', max: 100 },
+                        { name: '自信心', max: 100 },
+                    ],
+                name: {
+                    textStyle: {
+                        color: '#1F1F1F',
+                    }
+                }
+            },
+            series: [
+                {
+                    name: '能力档案',
+                    type: 'radar',
+                    data: radraData,
+                    
+                }
+            ]
+        };
+
+        myChart3.setOption(option3);
+        // const myChart = echarts.init(radarChart,value);
+        // const option = {
+        //     tooltip: {},
+        //     radar: {
+        //         // shape: 'circle',
+        //         name: {
+        //             textStyle: {
+        //                 color: '#fff',
+        //                 backgroundColor: '#999',
+        //                 borderRadius: 3,
+        //                 padding: [3, 5]
+        //             }
+        //         },
+        //         indicator: [
+        //             { name: '核心素养', max: 100 },
+        //             { name: '数学审美', max: 100 },
+        //             { name: '沟通交际', max: 100 },
+        //             { name: '创新意识', max: 100 },
+        //             { name: '实践能力', max: 100 },
+        //             { name: '自学能力', max: 100 },
+        //             { name: '学习习惯', max: 100 },
+        //             { name: '自信心', max: 100 },
+        //         ]
+        //     },
+        //     series: [{
+        //         name: '能力档案',
+        //         type: 'radar',
+        //         data: radraData,
+        //         symbol: 'none',
+        //         lineStyle: {
+        //             color: '#fff'
+        //         },
+        //         areaStyle: {
+        //             color: '#5470C6'
+        //         },
+        //         emphasis: {
+        //             itemStyle: {
+        //                 color: '#fff',
+        //                 borderWidth: 2
+        //             }
+        //         }
+        //     }]
+        // };
+        // myChart.setOption(option);
     });
 
     const name1 = ref('张三');
@@ -142,7 +247,6 @@
     const habitData = ref([
         '爱好：篮球',
         '爱好：打游戏',
-        '爱好：看电影',
     ]);
 
     const data = () => ({
@@ -163,6 +267,10 @@
 
 </script>
 <style scoped>
+    #radarChart {
+        width: 100%;
+        height: 400px;
+    }
     .card-title {
         font-size: 30px;
         margin:20px 0px 0px 10px;
