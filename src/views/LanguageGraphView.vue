@@ -22,10 +22,10 @@
 
 <script>
 import Axios from '@/axios/axiosPlugin';
-// import dashBoard from '../components/LanguageGraph/dashBoard.vue'
+import dashBoard from '../components/LanguageGraph/dashBoard.vue'
 import ForceGraph3D from '3d-force-graph'
 import SpriteText from 'three-spritetext'
-// import {onMounted } from 'vue';
+import {onMounted } from 'vue';
 
 
 export default {
@@ -62,9 +62,10 @@ export default {
       Axios.get('/api/graph/record')
       .then(response => {
         // // 请求成功，将数据赋值给 records 变量
-        this.json = response.data.json; // 从返回的数据中取出 json 数据
+        this.json = response.data.data; // 从返回的数据中取出 json 数据
         this.keyword = JSON.parse(sessionStorage.getItem('key'));
         this.d3jsonParser(this.json)
+        console.log("response")
         console.log(response)
       })
       .catch(error => {
@@ -81,12 +82,12 @@ export default {
           json : json
         }
       }).then(response => {
+        console.log(response)
           // 处理后端响应
           this.data = response.data.data
-          this.data = this.data.replace(/'/g, '"')
-          console.log("data")
+          // this.data = this.data.replace(/'/g, '"')
           console.log(this.data)
-          this.data = JSON.parse(this.data)
+          // this.data = JSON.parse(this.data)
           this.initData()
           sessionStorage.setItem('key', JSON.stringify(''))
         })
@@ -201,7 +202,7 @@ export default {
       console.log(this.linkSearch)
 
       this.Graph = ForceGraph3D()(this.$refs.graph).graphData({ nodes: this.nodeSearch, links: this.linkSearch })
-          .backgroundColor('#FFFFFF').width(2000).height(800).showNavInfo(false)
+          .backgroundColor('#FFFFFF').width(1026).height(700).showNavInfo(false)
           .nodeOpacity(0.65)
           .nodeVal(node =>{
             let size =95
@@ -311,13 +312,14 @@ export default {
 #graph{
   border-radius: 5px;
   background-color: white;
+  //height: 764px;
   height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: visible;
+  overflow: hidden;
 }
 
 #indicator {
