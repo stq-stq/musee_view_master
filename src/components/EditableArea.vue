@@ -14,7 +14,7 @@
 
 <script setup>
 import E from "wangeditor";
-import { ref, onMounted, nextTick, defineProps, watchEffect } from "vue";
+import { ref, onMounted, nextTick, watchEffect } from "vue";
 import AlertMenu  from "@/utils/LatexTextRender/formula-menu-conf";
 
 // 定义props
@@ -33,9 +33,9 @@ const editor = ref(null);
 const renderedFormula = ref("");
 
 function convert() {
-  MathJax.texReset();
-  MathJax.typesetClear();
-  MathJax.typesetPromise();
+  // MathJax.texReset();
+  // MathJax.typesetClear();
+  // MathJax.typesetPromise();
   localStorage.setItem("renderedFormula", renderedFormula.value);
 }
 

@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div> -->
-                <div style="margin-left:10px;border-radius: 16px;">
+                <div style="margin-left:20px;border-radius: 16px;">
                     <div ref="echartRef3" style="width: 30vw; height: 60vh;"></div>
                 </div>
                 <div class="chart-title">
@@ -103,7 +103,7 @@
                 text: '知识点档案',
                 padding: [30, 20, 30, 30],
                 textStyle: {
-                    fontSize: 24
+                    fontSize: 24.5
                 },
             },
             tooltip: {
@@ -345,7 +345,7 @@
     .card-content{
         width: 34%;
         padding-top: 30px;
-        height: 800px;
+        height: 900px;
     }
     .chart-title {
         font-size: 24px;

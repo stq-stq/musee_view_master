@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, watch, onMounted, onUnmounted } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiCloseCircleOutline, mdiStopCircleOutline, mdiRadioboxMarked } from '@mdi/js'
 import Recorder from 'recorder-core'

@@ -18,5 +18,9 @@ export default defineConfig({
       '@assets': path.join(__dirname, 'src/assets'),
       '@images': path.join(__dirname, 'src/images')
     }
+  },
+  server: {
+    host: '0.0.0.0',
   }
+
 })

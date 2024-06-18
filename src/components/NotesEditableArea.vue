@@ -10,7 +10,7 @@
 <script setup>
 import E from "wangeditor";
 import  AlertMenu  from "@/utils/LatexSvgRender/formula-menu-conf";
-import { ref, onMounted, nextTick, defineProps, watchEffect } from "vue";
+import { ref, onMounted, nextTick,watchEffect } from "vue";
 
 const props = defineProps({
     initMessage: {

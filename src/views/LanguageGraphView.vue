@@ -22,7 +22,7 @@
 
 <script>
 import Axios from '@/axios/axiosPlugin';
-import dashBoard from '../components/LanguageGraph/dashBoard.vue'
+// import dashBoard from '../components/LanguageGraph/dashBoard.vue'
 import ForceGraph3D from '3d-force-graph'
 import SpriteText from 'three-spritetext'
 import {onMounted } from 'vue';
@@ -202,7 +202,7 @@ export default {
       console.log(this.linkSearch)
 
       this.Graph = ForceGraph3D()(this.$refs.graph).graphData({ nodes: this.nodeSearch, links: this.linkSearch })
-          .backgroundColor('#FFFFFF').width(1026).height(700).showNavInfo(false)
+          .backgroundColor('#FFFFFF').width(1741).height(800).showNavInfo(false)
           .nodeOpacity(0.65)
           .nodeVal(node =>{
             let size =95

@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import CaptureMainView from '../views/CaptureMainView.vue'
 import QuestionsCollectionView from '../views/QuestionsCollectionView.vue'
-import UserInformationView from '../views/UserInformationView.vue'
+// import UserInformationView from '../views/UserInformationView.vue'
+import UserInforView from '../views/UserInforView.vue'
 import NotFoundComponent from '../views/NotFoundPage.vue'
+import LanguageGraphView from '../views/LanguageGraphView.vue'
+import LearnProgramView from '../views/LearnProgramView.vue'
 
 
 const router = createRouter({
@@ -18,10 +21,25 @@ const router = createRouter({
       name: 'QuestionsCollectionView',
       component: QuestionsCollectionView
     },
+    // {
+    //   path: '/musee_view_master/userinfo',
+    //   name: 'UserInformationView',
+    //   component: UserInformationView
+    // },
     {
-      path: '/musee_view_master/userinfo',
-      name: 'UserInformationView',
-      component: UserInformationView
+      path: '/musee_view_master/student',
+      name: 'UserInforView',
+      component: UserInforView
+    },
+    {
+      path: '/musee_view_master/graph',
+      name: 'LanguageGraphView',
+      component: LanguageGraphView
+    },
+    {
+      path: '/musee_view_master/program',
+      name: 'LearnProgramView',
+      component: LearnProgramView
     },
     {
       path: '/musee_view_master/error',

@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from 'vue';
+import { ref } from 'vue';
 import {commonGlobalState} from '@/utils/commonStore.js';
 import FolderTree from './FolderTree.vue';
 import { globalState } from '@/utils/store.js';

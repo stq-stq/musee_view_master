@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { computed, defineEmits } from 'vue';
+import { computed } from 'vue';
 import { globalState } from '@/utils/store';
 
 // 声明将要使用的自定义事件

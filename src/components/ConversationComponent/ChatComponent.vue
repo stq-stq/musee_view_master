@@ -17,10 +17,10 @@
     <v-card-subtitle style="white-space: normal; font-size: 1.1rem;    line-height: 2rem;">{{ props.userMessage
       }}</v-card-subtitle>
   </v-card>
-</template>
+</template> 
 
 <script setup>
-import { defineProps } from 'vue';
+// import { defineProps } from 'vue';
 import GPTSVGComponent from '../GPTSVGComponent.vue';
 const props = defineProps({
   userMessage: {
