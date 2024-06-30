@@ -70,11 +70,14 @@ const loading = ref(false);
 //     })
 //         .then((response) => {
 //             if (response.data.status === 1) {
+//                 // console.log('获取临时数据');
 //                 const temp = response.data.data;
+//                 // console.log('将临时数据赋值给mistakeCollections');
 //                 mistakeCollections.value = temp;
 //             }
 //         })
 //         .catch((error) => {
+//             // alert('获取错题集失败');
 //             console.error(error);
 //         });
 // });

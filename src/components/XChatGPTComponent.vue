@@ -149,9 +149,9 @@ onMounted(() => {
 });
 
 function convert() {
-  MathJax.texReset();
-  MathJax.typesetClear();
-  MathJax.typesetPromise();
+  // MathJax.texReset();
+  // MathJax.typesetClear();
+  // MathJax.typesetPromise();
 }
 
 function updateFormula() {

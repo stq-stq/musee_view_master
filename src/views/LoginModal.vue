@@ -79,9 +79,14 @@ function handleLogin() {
                     password: password.value,
                 },
             }).then(function (response) {
+                
                 if (response.data.status === 1) {
+                    console.log('状态为 1，进行本地存储操作');
+                    console.log('存储 sid ');
                     localStorage.setItem('sid', response.data.data[0]);
+                    console.log('存储 token ');
                     localStorage.setItem('token', response.data.data[1]);
+                    onsole.log('存储 username ');
                     localStorage.setItem('username', username.value);
                 }
                 return fetchData();

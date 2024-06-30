@@ -67,8 +67,9 @@ export async function updataContent() {
     }).then(function (response) {
         globalState.dialogueArray = response.data.data.wenxinChatHistory.map((item, index) => {
             // 确定发言者是用户还是助手
+            console.log('确定发言者是用户还是助手');
             const speaker = index % 2 === 0 ? "user" : "assistant";
-
+            console.log('设置发言者及头像并获取数据');
             return {
                 speaker: speaker, // 设置发言者
                 message: speaker === "user" ? item.user : item.assistant, // 根据发言者获取消息

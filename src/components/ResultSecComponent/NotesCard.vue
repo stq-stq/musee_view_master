@@ -37,8 +37,11 @@ onMounted(() => {
             qid: globalState.history[0].qid,
         }
     }).then((res) => {
+        console.log('设置文本数据');
         textValue.value = res.data.data;
+        console.log('更新数据状态');
         hasData.value = res.data.data !== '';
+        console.log('存储到本地存储');
         localStorage.setItem('Notes', res.data.data);
     });
 });
@@ -57,8 +60,11 @@ watch(() => dialog.value, () => {
             note: textValue.value
         }
     }).then((res) => {
+        console.log('设置文本数据');
         textValue.value = res.data.data;
+        console.log('更新数据状态');
         hasData.value = res.data.data !== '';
+        console.log('存储到本地存储');
         localStorage.setItem('Notes', textValue.value);
     });
     }

@@ -58,6 +58,7 @@ function openCreateFolder(path = [], value) {
         })
             .then((response) => {
                 if (response.data.status === 1) {
+                    console.log("关闭对话框");
                     createFolderDialogVisible.value = false; // 关闭对话框
                     alert("添加错题成功");
                 }

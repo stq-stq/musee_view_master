@@ -61,16 +61,19 @@ export default {
       // 发送 GET 请求到后端获取 JSON 数据
       Axios.get('/api/graph/record')
       .then(response => {
-        // // 请求成功，将数据赋值给 records 变量
-        this.json = response.data.data; // 从返回的数据中取出 json 数据
-        this.keyword = JSON.parse(sessionStorage.getItem('key'));
-        this.d3jsonParser(this.json)
-        console.log("response")
-        console.log(response)
+          console.log('请求成功，开始处理数据');
+          this.json = response.data.data; // 从返回的数据中取出 json 数据
+          console.log('获取到 JSON 数据并赋值给 this.json');
+          this.keyword = JSON.parse(sessionStorage.getItem('key'));
+          console.log('从 sessionStorage 中获取并解析 "key" 的值赋给 this.keyword');
+          this.d3jsonParser(this.json);
+          console.log('调用 d3jsonParser 方法处理 this.json');
+          console.log("response");
+          console.log(response);
       })
       .catch(error => {
-        // 请求失败，处理错误
-        console.error('Error fetching records:', error);
+          console.error('请求失败，处理错误');
+          console.error('Error fetching records:', error);
       });
     },
     d3jsonParser (json) { // 解析json数据，主要负责数据的去重、标准化
@@ -82,19 +85,23 @@ export default {
           json : json
         }
       }).then(response => {
-        console.log(response)
-          // 处理后端响应
-          this.data = response.data.data
-          // this.data = this.data.replace(/'/g, '"')
-          console.log(this.data)
-          // this.data = JSON.parse(this.data)
-          this.initData()
-          sessionStorage.setItem('key', JSON.stringify(''))
-        })
-        .catch(error => {
-          // 处理错误
+          console.log('获取到后端响应');
+          console.log(response);
+          console.log('开始处理后端响应');
+          this.data = response.data.data;
+          console.log('获取到的数据:', this.data);
+          // this.data = this.data.replace(/'/g, '"');
+          console.log('尝试数据转换操作（注释部分）');
+          // this.data = JSON.parse(this.data);
+          this.initData();
+          console.log('调用初始化数据方法');
+          sessionStorage.setItem('key', JSON.stringify(''));
+          console.log('将键"key"的值设置为空字符串并存储到 sessionStorage 中');
+      })
+      .catch(error => {
+          console.error('发送请求时出错:');
           console.error('Error sending request:', error);
-        });
+      });
     },
     initData () {
       this.nodes = this.data.nodes

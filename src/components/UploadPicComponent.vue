@@ -86,14 +86,17 @@ function handleClassifyClick() {
   })
       .then((response) => {
         if (response.data.status === 1) {
+          console.log('开始遍历数据');
           response.data.data.forEach((element) => {
             if (element.classification) {
               console.log('找到了classification属性:', element.classification);
             }
           });
+          console.log('完成遍历数据');
         }
       })
       .catch((error) => {
+        console.log('出现错误');
         console.error(error);
       });
 

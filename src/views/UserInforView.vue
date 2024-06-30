@@ -8,7 +8,7 @@
                 <!-- info -->
                 <div class="info">
                     <div class="image-container">
-                        <v-img src="../src/images/musee-edu/student.svg" height=auto width=auto cover></v-img>
+                        <v-img src="../src/images/musee-edu/info.svg" height=200px width=200px cover></v-img>
                     </div>
                     <div class="text-container">
                         <v-card-title class="card-title"><span class="dot" style="background-color: green;"></span>Musee</v-card-title>
@@ -284,7 +284,7 @@
         position: relative;
         margin-left: 20px;
         margin-top: 20px;
-        width: auto;
+        width: 200px;
         height: 200px;
     }
     .image-container img {

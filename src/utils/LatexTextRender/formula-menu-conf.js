@@ -1,5 +1,5 @@
 import E from "wangeditor";
-import formulaEditor from "easy-formula-editor";
+import formulaEditor from "easy-formula-editor"; 
 import createPanelConf from "./create-panel-conf";
 
 const { PanelMenu, Panel } = E;

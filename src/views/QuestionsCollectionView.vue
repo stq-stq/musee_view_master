@@ -176,7 +176,8 @@ const openChat = ref(false);
 const openChat1 = ref(false);
 const show = ref(false);
 const show1 = ref(false);
-const text = `根据甲车行驶了全程的2/3，而乙车行驶了全程的45%，得到甲、乙各自的行驶路程。
+const text = `设全程为x千米。
+        根据甲车行驶了全程的2/3，而乙车行驶了全程的45%，得到甲、乙各自的行驶路程。
         已知两车相距35千米。
         根据两车相向而行的关系，可以得到函数方程，解得A和B两城之间的距离。
         以上，是本题的解题思路。`;
@@ -207,7 +208,7 @@ const conversationData = [
 
     },
     {
-        userMessage: '这道题我不会，你能给我解答一下吗?大模型说：设全程为x千米。',
+        userMessage: '这道题我不会，你能给我解答一下吗?',
         userTime: '2022-04-12 10:00:00',
         userName: 'user',
         userInfo: '别人能做到的事情，我也能做到。'
@@ -216,14 +217,14 @@ const conversationData = [
         userMessage: text,
         userTime: '2022-04-12 10:00:00',
         userName: 'ChatGPT',
-        userInfo: '别人能做到的事情，我也能做到。'
+        userInfo: '沐斯慧教AI大模型'
 
     },
     {
         userMessage: '根据两车相向而行得到的关系是不是，两车行驶的路程的总和再加上相距的距离就是整段路的长度呀？但是两车行驶的路程的总和怎么算呢？',
         userTime: '2022-04-12 10:00:00',
         userName: 'user',
-        userInfo: '沐斯慧教AI大模型'
+        userInfo: '别人能做到的事情，我也能做到。'
 
     },
 ]
