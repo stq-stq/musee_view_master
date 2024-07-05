@@ -3,6 +3,7 @@ import { globalState } from '@/utils/store.js';
 import { commonGlobalState } from '@/utils/commonStore.js';
 import { baseURL } from '@/config.js';
 
+// 发送请求函数
 export const sendDefault = (textValue) => {
     getCommunication().then(function (_response) {
         globalState.dialogueArray.push({
@@ -45,7 +46,7 @@ export const sendDefault = (textValue) => {
         // 可以在这里处理错误的逻辑
     });
 }
-
+// 发送错误信息函数
 export const sendMistake = (textValue) => {
     getWrong().then(function (_response) {
         globalState.dialogueArray.push({
@@ -90,7 +91,7 @@ export const sendMistake = (textValue) => {
     });
 }
 
-
+// 发送指导信息函数
 export const sendGuide = (textValue) => {
     getIns().then(function (_response) {
         globalState.dialogueArray.push({
@@ -137,6 +138,7 @@ export const sendGuide = (textValue) => {
     });
 }
 
+// 发送费曼技巧函数
 export const sendFeynman = (textValue) => {
     getFeiman().then(function (_response) {
         globalState.dialogueArray.push({
@@ -182,7 +184,7 @@ export const sendFeynman = (textValue) => {
     });
 }
 
-
+// 发送个人说明函数
 export const sendexplanation = (textValue) => {
     getPersonalCom().then(function (_response) {
         globalState.dialogueArray.push({
@@ -228,7 +230,7 @@ export const sendexplanation = (textValue) => {
     });
 }
 
-
+//以下是获取对话历史的函数
 export const getCommunication = () => Axios({
     method: 'get',
     url: '/api/student/question/communication',
@@ -259,6 +261,7 @@ export const getCommunication = () => Axios({
     // 可以在这里处理错误的逻辑
 });
 
+//以下是获取错误答案的函数
 export const getWrong = () => Axios({
     method: 'get',
     url: '/api/student/question/communication/wrongAnswer',
@@ -290,7 +293,7 @@ export const getWrong = () => Axios({
     // 可以在这里处理错误的逻辑
 });
 
-
+//以下是获取引导的函数
 export const getIns = () => Axios({
     method: 'get',
     url: '/api/student/chat/inspiration/history',
@@ -324,6 +327,7 @@ export const getIns = () => Axios({
     // 可以在这里处理错误的逻辑
 });
 
+//以下是获取个人说明的函数
 export const getPersonalCom = () => Axios({
     method: 'get',
     url: '/api/student/chat/explanation/history',
@@ -355,7 +359,7 @@ export const getPersonalCom = () => Axios({
     console.error('发送失败', error);
     // 可以在这里处理错误的逻辑
 });
-
+//以下是获取费曼的函数
 export const getFeiman = () => Axios({
     method: 'get',
     url: '/api/student/chat/feiman/history',

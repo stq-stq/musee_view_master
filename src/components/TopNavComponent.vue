@@ -83,7 +83,6 @@
             </v-dialog>
         </template> -->
 
-
         <template>
             <v-row justify="center">
                 <v-dialog v-model="dialog" persistent width="1024">

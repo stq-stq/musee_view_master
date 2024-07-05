@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <keep-alive>
-                    <v-stepper editable :items="['拍照', '拍错题', '启发式问答', '个性化解析', '举一反三', '题解']" elevation="0"
+                    <v-stepper editable :items="['拍照', '拍错题', '启发式问答', '学习计划', '举一反三', '题解']" elevation="0"
                         hide-actions @update:modelValue="onStepChange">
                         <template v-slot:item.1>
                             <div
@@ -40,7 +40,68 @@
                                 <UploadPicComponent></UploadPicComponent>
                             </div>
                         </template>
-                        <template v-for="i in [3, 4, 5]" :key="i" v-slot:[`item.${i}`]>
+                        <template v-for="i in [4]" :key="i" v-slot:[`item.${i}`]>
+                            <div>
+                                <div v-if="globalState.dialogueArray.length === 0" style="height: 60vh;">
+                                    <div class="svg-container">
+                                        <GPTSVGComponent></GPTSVGComponent>
+                                    </div>
+                                    <ChipGroupComponent @addToTextArea="handleTagClick" />
+                                </div>
+                                <div v-else style="height: 50vh;overflow-y: auto;margin: 20px 0 0 0;"
+                                    ref="scrollContainer">
+                                    <div v-for="(message, index) in globalState.dialogueArray.slice(1)" :key="index">
+                                        <ChatComponent v-if="message.speaker == 'user'" :userMessage="message.message"
+                                            :avatarSrc="user.avatarSrc" :userName="message.speaker"
+                                            :userInfo="user.userInfo"></ChatComponent>
+                                        <ChatComponent v-else :userMessage="message.message" :avatarSrc="user.avatarSrc"
+                                            :userName="message.speaker" :userInfo="user.userInfo"></ChatComponent>
+                                        <div class="svg">
+                                            <v-img src="../src/images/empty-picture/5.svg"  cover></v-img>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tags-section">
+                                    <v-sheet class="tags-wrapper">
+                                        <v-chip-group mandatory class="chip-group" selected-class="primary-text">
+                                            <v-chip v-for="tag in tags" :key="tag" class="chip-item"
+                                                @click="TagClick(tag)">{{ tag }}</v-chip>
+                                        </v-chip-group>
+                                    </v-sheet>
+                                </div>
+                                <!-- 更改 -->
+                                <div class="textarea-container" v-if="!ConversationShow">
+                                    <v-text-field placeholder="Message" :model-value="textValue" variant="solo" rounded
+                                        @click="openDialog" class="single-line-textarea"></v-text-field>
+
+                                    <!-- 更改 -->
+                                    <v-btn
+                                        v-if="commonGlobalState.chatModel !== 0 && commonGlobalState.chatModel !== 3 && commonGlobalState.btnflag === true"
+                                        :class="['compact-button', 'icon-button']" icon="mdi-arrow-up-circle"
+                                        @click="FirstSend" color="#2081C3" rounded width="auto"
+                                        style="padding: 5px;border-radius: 15px;">
+                                        开始对话
+                                    </v-btn>
+
+                                    <!-- 更改 -->
+                                    <v-btn v-else :class="['compact-button', 'icon-button']" icon="mdi-arrow-up-circle"
+                                        @click="TextSend" color="#2081C3">
+                                        <svg-icon type="mdi" :path="mdiArrowUpCircle" class="expand-icon"></svg-icon>
+                                    </v-btn>
+
+
+                                    <v-btn :class="['compact-button', 'icon-button']" icon="mdi-arrow-up-circle"
+                                        @click="ConversationModel" color="#2081C3">
+                                        <svg-icon type="mdi" :path="mdiMicrophone" class="expand-icon"
+                                            style="height: 40px;height: 40px;"></svg-icon>
+                                    </v-btn>
+                                </div>
+
+                                <ConversationComponents v-bind:overlay="ConversationShow"
+                                    @update:overlay="handleOverlayUpdate" />
+                            </div>
+                        </template>
+                        <template v-for="i in [3, 5]" :key="i" v-slot:[`item.${i}`]>
                             <div>
                                 <div v-if="globalState.dialogueArray.length === 0" style="height: 60vh;">
                                     <div class="svg-container">
@@ -176,9 +237,9 @@ onMounted(() => {
 });
 
 function convert() {
-    // MathJax.texReset();
-    // MathJax.typesetClear();
-    // MathJax.typesetPromise();
+    MathJax.texReset();
+    MathJax.typesetClear();
+    MathJax.typesetPromise();
 }
 
 function updateFormula() {
@@ -258,7 +319,7 @@ function TextSend() {
 //更改
 function FirstSend() {
     console.log('FirstSend', textValue.value);
-    switch (commonGlobalState.chatModel) {
+    switch (commonGlobalState.chatModel) { 
         case 1:
             sendGuide(textValue.value);
             break;
@@ -425,5 +486,9 @@ var tags = globalState.steps.map((item, index) => {
 
 .primary-text {
     color: primary;
+}
+.svg{
+    width: 50%;
+    transform: translate(50%, 0%);
 }
 </style>

@@ -33,9 +33,9 @@
 import { globalState } from '@/utils/store.js';
 import { onMounted, nextTick } from "vue";
 function convert() {
-  // MathJax.texReset();
-  // MathJax.typesetClear();
-  // MathJax.typesetPromise();
+  MathJax.texReset();
+  MathJax.typesetClear();
+  MathJax.typesetPromise();
 }
 
 function updateFormula() {

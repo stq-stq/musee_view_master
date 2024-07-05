@@ -159,6 +159,7 @@ function TextSend() {
     textValue.value = '';
     localStorage.setItem('renderedFormula', '');
 }
+
 </script>
 
 <style scoped>

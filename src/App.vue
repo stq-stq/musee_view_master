@@ -1,7 +1,10 @@
 <template>
   <TopNavComponent />
   <RouterView />
+  
   <LoginModal ref="loginModal" />
+  
+  
   <div class="pa-4 text-center">
         <v-dialog v-model="commonGlobalState.dialogVisible" max-width="320" persistent>
             <v-list class="py-2" color="primary" elevation="12" rounded="lg">
@@ -34,4 +37,6 @@ onMounted(
 
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

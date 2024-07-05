@@ -88,6 +88,9 @@ function handleLogin() {
                     localStorage.setItem('token', response.data.data[1]);
                     onsole.log('存储 username ');
                     localStorage.setItem('username', username.value);
+                    console.log('若未填问卷，则跳转到问卷填写页面');
+                    if(commonGlobalState.formMoal==false){commonGlobalState.showModal2=true;}
+                    else{commonGlobalState.showModal=false;}
                 }
                 return fetchData();
             }).catch(function (error) {

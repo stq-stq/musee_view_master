@@ -27,6 +27,9 @@ const editor = ref(null);
 const renderedFormula = ref("");
 
 function convert() {
+    MathJax.texReset();
+    MathJax.typesetClear();
+    MathJax.typesetPromise();
     localStorage.setItem("Notes", renderedFormula.value);
 }
 

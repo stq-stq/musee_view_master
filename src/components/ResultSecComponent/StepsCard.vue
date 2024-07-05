@@ -3,7 +3,7 @@
         <v-list>
             <v-card v-for="(step, index) in globalState.steps" :key="index" :elevation="0" class="list-item-card"
                 color="">
-                <v-list-item>
+                <v-list-item> 
                     <div style="display: flex;">
                         <!-- 由于此处不再需要显示id，移除avatar-with-id -->
                         <v-avatar size="45px" class="avatar-item">

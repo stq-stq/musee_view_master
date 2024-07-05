@@ -23,6 +23,8 @@ export const commonGlobalState = reactive({
             "双曲线": {},
             "数学物理方法": {}
         },
-    }
+    },
+    // formMoal:false,
+    // showModal2:false,
 });
 
